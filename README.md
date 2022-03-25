@@ -21,7 +21,7 @@ curl --location --request GET 'https://{restId}.execute-api.us-east-1.amazonaws.
 ```
 curl --location --request PUT 'https://ikekvxm1xg.execute-api.us-east-1.amazonaws.com/prod/assets/files/README.md' \
 --header 'Content-Type: text/markdown' \
---data-binary '@/C:/Dev/smartbank/onboarding/coresignup-stack/README.md'
+--data-binary '@/C:/Dev/marciocadev/security-share-s3-files/README.md'
 ```
 
 #### no postman coloque na URL

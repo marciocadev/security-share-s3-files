@@ -1,0 +1,768 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1`] = `
+Object {
+  "Outputs": Object {
+    "BucketRestEndpoint07947ADB": Object {
+      "Value": Object {
+        "Fn::Join": Array [
+          "",
+          Array [
+            "https://",
+            Object {
+              "Ref": "BucketRest62F23895",
+            },
+            ".execute-api.",
+            Object {
+              "Ref": "AWS::Region",
+            },
+            ".",
+            Object {
+              "Ref": "AWS::URLSuffix",
+            },
+            "/",
+            Object {
+              "Ref": "BucketRestDeploymentStageprodF8AFDD5C",
+            },
+            "/",
+          ],
+        ],
+      },
+    },
+  },
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": Object {
+    "BucketGetMetaRole892F9141": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "RoleName": "bucket-get-meta-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "BucketGetMetaRoleDefaultPolicy5123D6C5": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "SecurityBucket604BCC86",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "SecurityBucket604BCC86",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "SecurityBucket604BCC86",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "BucketGetMetaRoleDefaultPolicy5123D6C5",
+        "Roles": Array [
+          Object {
+            "Ref": "BucketGetMetaRole892F9141",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "BucketGetRole6E69CC18": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "RoleName": "bucket-get-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "BucketGetRoleDefaultPolicy16CAE682": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "SecurityBucket604BCC86",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "SecurityBucket604BCC86",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "SecurityBucket604BCC86",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "BucketGetRoleDefaultPolicy16CAE682",
+        "Roles": Array [
+          Object {
+            "Ref": "BucketGetRole6E69CC18",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "BucketPutRole6927B8A3": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "RoleName": "bucket-put-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "BucketPutRoleDefaultPolicyAB69BD79": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "s3:PutObject",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "SecurityBucket604BCC86",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "SecurityBucket604BCC86",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "SecurityBucket604BCC86",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "BucketPutRoleDefaultPolicyAB69BD79",
+        "Roles": Array [
+          Object {
+            "Ref": "BucketPutRole6927B8A3",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "BucketRest62F23895": Object {
+      "Properties": Object {
+        "BinaryMediaTypes": Array [
+          "*/*",
+        ],
+        "MinimumCompressionSize": 0,
+        "Name": "security-share-s3-files",
+      },
+      "Type": "AWS::ApiGateway::RestApi",
+    },
+    "BucketRestAccountE34516D4": Object {
+      "DependsOn": Array [
+        "BucketRest62F23895",
+      ],
+      "Properties": Object {
+        "CloudWatchRoleArn": Object {
+          "Fn::GetAtt": Array [
+            "BucketRestCloudWatchRole56EA8369",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::ApiGateway::Account",
+    },
+    "BucketRestCloudWatchRole56EA8369": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "BucketRestDeployment649FBD4Cb7d823bd6c0e0db4027e7d541a41a6f5": Object {
+      "DependsOn": Array [
+        "BucketRestassetsfolderkeyGET2F93F444",
+        "BucketRestassetsfolderkeyHEADF2683D9C",
+        "BucketRestassetsfolderkeyPUT862D88DD",
+        "BucketRestassetsfolderkey2A68F9DC",
+        "BucketRestassetsfolderF8A29FF3",
+        "BucketRestassets45B1B8CD",
+      ],
+      "Properties": Object {
+        "Description": "Automatically created by the RestApi construct",
+        "RestApiId": Object {
+          "Ref": "BucketRest62F23895",
+        },
+      },
+      "Type": "AWS::ApiGateway::Deployment",
+    },
+    "BucketRestDeploymentStageprodF8AFDD5C": Object {
+      "DependsOn": Array [
+        "BucketRestAccountE34516D4",
+      ],
+      "Properties": Object {
+        "DeploymentId": Object {
+          "Ref": "BucketRestDeployment649FBD4Cb7d823bd6c0e0db4027e7d541a41a6f5",
+        },
+        "RestApiId": Object {
+          "Ref": "BucketRest62F23895",
+        },
+        "StageName": "prod",
+      },
+      "Type": "AWS::ApiGateway::Stage",
+    },
+    "BucketRestassets45B1B8CD": Object {
+      "Properties": Object {
+        "ParentId": Object {
+          "Fn::GetAtt": Array [
+            "BucketRest62F23895",
+            "RootResourceId",
+          ],
+        },
+        "PathPart": "assets",
+        "RestApiId": Object {
+          "Ref": "BucketRest62F23895",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "BucketRestassetsfolderF8A29FF3": Object {
+      "Properties": Object {
+        "ParentId": Object {
+          "Ref": "BucketRestassets45B1B8CD",
+        },
+        "PathPart": "{folder}",
+        "RestApiId": Object {
+          "Ref": "BucketRest62F23895",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "BucketRestassetsfolderkey2A68F9DC": Object {
+      "Properties": Object {
+        "ParentId": Object {
+          "Ref": "BucketRestassetsfolderF8A29FF3",
+        },
+        "PathPart": "{key}",
+        "RestApiId": Object {
+          "Ref": "BucketRest62F23895",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "BucketRestassetsfolderkeyGET2F93F444": Object {
+      "Properties": Object {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "GET",
+        "Integration": Object {
+          "Credentials": Object {
+            "Fn::GetAtt": Array [
+              "BucketGetRole6E69CC18",
+              "Arn",
+            ],
+          },
+          "IntegrationHttpMethod": "GET",
+          "IntegrationResponses": Array [
+            Object {
+              "ResponseParameters": Object {
+                "method.response.header.Content-Type": "integration.response.header.Content-Type",
+              },
+              "StatusCode": "200",
+            },
+          ],
+          "RequestParameters": Object {
+            "integration.request.path.folder": "method.request.path.folder",
+            "integration.request.path.key": "method.request.path.key",
+          },
+          "Type": "AWS",
+          "Uri": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                Object {
+                  "Ref": "AWS::Region",
+                },
+                ":s3:path/",
+                Object {
+                  "Ref": "SecurityBucket604BCC86",
+                },
+                "/{folder}/{key}",
+              ],
+            ],
+          },
+        },
+        "MethodResponses": Array [
+          Object {
+            "ResponseParameters": Object {
+              "method.response.header.Content-Type": true,
+            },
+            "StatusCode": "200",
+          },
+        ],
+        "RequestParameters": Object {
+          "method.request.header.Content-Type": true,
+          "method.request.path.folder": true,
+          "method.request.path.key": true,
+        },
+        "ResourceId": Object {
+          "Ref": "BucketRestassetsfolderkey2A68F9DC",
+        },
+        "RestApiId": Object {
+          "Ref": "BucketRest62F23895",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "BucketRestassetsfolderkeyHEADF2683D9C": Object {
+      "Properties": Object {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "HEAD",
+        "Integration": Object {
+          "Credentials": Object {
+            "Fn::GetAtt": Array [
+              "BucketGetMetaRole892F9141",
+              "Arn",
+            ],
+          },
+          "IntegrationHttpMethod": "HEAD",
+          "IntegrationResponses": Array [
+            Object {
+              "ResponseParameters": Object {
+                "method.response.header.Content-Type": "integration.response.header.Content-Type",
+              },
+              "StatusCode": "200",
+            },
+          ],
+          "RequestParameters": Object {
+            "integration.request.path.folder": "method.request.path.folder",
+            "integration.request.path.key": "method.request.path.key",
+          },
+          "Type": "AWS",
+          "Uri": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                Object {
+                  "Ref": "AWS::Region",
+                },
+                ":s3:path/",
+                Object {
+                  "Ref": "SecurityBucket604BCC86",
+                },
+                "/{folder}/{key}",
+              ],
+            ],
+          },
+        },
+        "MethodResponses": Array [
+          Object {
+            "ResponseParameters": Object {
+              "method.response.header.Content-Type": true,
+            },
+            "StatusCode": "200",
+          },
+        ],
+        "RequestParameters": Object {
+          "method.request.header.Content-Type": true,
+          "method.request.path.folder": true,
+          "method.request.path.key": true,
+        },
+        "ResourceId": Object {
+          "Ref": "BucketRestassetsfolderkey2A68F9DC",
+        },
+        "RestApiId": Object {
+          "Ref": "BucketRest62F23895",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "BucketRestassetsfolderkeyPUT862D88DD": Object {
+      "Properties": Object {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "PUT",
+        "Integration": Object {
+          "Credentials": Object {
+            "Fn::GetAtt": Array [
+              "BucketPutRole6927B8A3",
+              "Arn",
+            ],
+          },
+          "IntegrationHttpMethod": "PUT",
+          "IntegrationResponses": Array [
+            Object {
+              "ResponseParameters": Object {
+                "method.response.header.Content-Type": "integration.response.header.Content-Type",
+              },
+              "StatusCode": "200",
+            },
+          ],
+          "RequestParameters": Object {
+            "integration.request.path.folder": "method.request.path.folder",
+            "integration.request.path.key": "method.request.path.key",
+          },
+          "Type": "AWS",
+          "Uri": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                Object {
+                  "Ref": "AWS::Region",
+                },
+                ":s3:path/",
+                Object {
+                  "Ref": "SecurityBucket604BCC86",
+                },
+                "/{folder}/{key}",
+              ],
+            ],
+          },
+        },
+        "MethodResponses": Array [
+          Object {
+            "ResponseParameters": Object {
+              "method.response.header.Content-Type": true,
+            },
+            "StatusCode": "200",
+          },
+        ],
+        "RequestParameters": Object {
+          "method.request.header.Content-Type": true,
+          "method.request.path.folder": true,
+          "method.request.path.key": true,
+        },
+        "ResourceId": Object {
+          "Ref": "BucketRestassetsfolderkey2A68F9DC",
+        },
+        "RestApiId": Object {
+          "Ref": "BucketRest62F23895",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": Object {
+      "DependsOn": Array [
+        "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "483ae06ed27ef8ca76e011264d772420593a6cfe8544759c306ef3b98c9e25be.zip",
+        },
+        "Description": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "Lambda function for auto-deleting objects in ",
+              Object {
+                "Ref": "SecurityBucket604BCC86",
+              },
+              " S3 bucket.",
+            ],
+          ],
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs12.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "SecurityBucket604BCC86": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "BucketName": "security-bucket-access-with-cdk",
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:auto-delete-objects",
+            "Value": "true",
+          },
+        ],
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "SecurityBucketAutoDeleteObjectsCustomResource9E4B7915": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "SecurityBucketPolicy6A413D18",
+      ],
+      "Properties": Object {
+        "BucketName": Object {
+          "Ref": "SecurityBucket604BCC86",
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::S3AutoDeleteObjects",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "SecurityBucketPolicy6A413D18": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "SecurityBucket604BCC86",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+              ],
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::GetAtt": Array [
+                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                    "Arn",
+                  ],
+                },
+              },
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "SecurityBucket604BCC86",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "SecurityBucket604BCC86",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;

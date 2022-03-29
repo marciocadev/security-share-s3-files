@@ -1,6 +1,5 @@
 # security-share-s3-files
 
-
 ## bucket
 exemplo: `https://github.com/aws-samples/serverless-patterns/blob/main/apigw-s3-cdk/cdk/lib/apigw-s3-cdk-stack.ts`
 
